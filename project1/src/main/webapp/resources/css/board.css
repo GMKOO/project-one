@@ -1,0 +1,42 @@
+@charset "UTF-8";
+table {
+	width: 700px; 
+	height: 700px;
+	margin: 0 auto;
+	border-collapse: :collapse;
+}
+
+th {
+	font-size: large;
+	background-color: gray;
+	
+}
+
+td{
+	text-align: center;
+	border-bottom: 1px solid gray;
+	font-size: medium;
+	
+}
+
+#td1{
+	width: 15%;
+	
+	
+	
+}
+
+
+#td2 {
+	width: 20%;
+	
+}
+
+.title {
+	
+	text-align:  left;
+}
+
+tr:hover {
+	background-color: gray;
+}
