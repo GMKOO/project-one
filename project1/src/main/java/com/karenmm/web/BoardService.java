@@ -41,6 +41,11 @@ public class BoardService {
 		
 		return boardDAO.detail(bno);
 	}
+	//글쓰기 입니다.
+	public void write(BoardDTO dto) {
+		boardDAO.write(dto);
+		
+	}
 	
 
 	

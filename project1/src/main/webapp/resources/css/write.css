@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+.write-div {
+	
+	margin:0 auto;
+	background-color: gray;
+	width: 800px;
+	height: 600px;
+	padding: 10px;
+	}
+
+	.write-div input {
+		margin: 0; padding:0;
+		width: 100%;
+		height: 30px;
+		 
+	
+	}
+	
+	.write-div textarea {
+	
+		margin: 0; padding: 0;
+		width: 100%;
+		height: 600px;
+		margin: 5px; 0px;
+	}
+
+	
+	
