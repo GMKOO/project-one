@@ -18,11 +18,16 @@
 	</select>
 	
 	<insert id="write" parameterType="boardDTO">
-	INSERT INTO board (btitle,bcontent,bwrite)
-	VALUES (#{btitle}, #{bcontent}, #{bwrite})
+	INSERT INTO board (btitle,bcontent,bwrite,bip)
+	VALUES (#{btitle}, #{bcontent}, #{bwrite}, #{bip})
 	<!-- insert는 result가 없습니다 -->
 	</insert>
 <!-- #{변수명}을 적어주면 변수가 들어간다 -->
+
+	<delete id="delete" parameterType="boardDTO">
+	DELETE from Board WHERE bno=#{bno}
+	
+	</delete>
 
 
 	</mapper>

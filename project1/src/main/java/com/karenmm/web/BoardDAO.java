@@ -38,6 +38,15 @@ public class BoardDAO {
 			//select를 제외한 나머지는 영향받은 행의 수를 받아오기도합니다
 			
 		}
+
+		public void delete(BoardDTO dto) {
+			sqlSession.delete("board.delete", dto);
+			
+		}
+
+	
+
+		
 	
 	
 

@@ -49,9 +49,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.jsp">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
+							<li class="active"><a href="index.jsp">Home</a></li>
+							<li><a href="board.jsp">Board</a></li>
+							<li><a href="notice.jsp">Notice</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -75,7 +75,7 @@
 								</header>
 								<a href="#" class="image main"><img src="img/321.gif" alt="" style=" height: 500px; width: 100%; margin-left: 80px; " /></a>
 								<ul class="actions special">
-									<li><a href="#" class="button large">참여하라</a></li>
+									<li><a href="https://open.kakao.com/o/gYmTF3vf" class="button large">참여하라</a></li>
 								</ul>
 							</article>
 
@@ -83,26 +83,27 @@
 							<section class="posts">
 								<article>
 									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
+									
+									
+									
 									</header>
-									<a href="#" class="image fit"><img src="img/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<a href="#" class="image fit"><img src="img/111.jpg" alt="" /></a>
+									<p></p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">이거먹자</a></li>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
+									
+									
+									
 									</header>
-									<a href="#" class="image fit"><img src="img/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+								
+									<a href="#" class="image fit"><img src="img/참치.png" alt="" /></a>
+									<p></p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">이거먹자</a></li>
 									</ul>
 								</article>
 								<article>

@@ -9,9 +9,9 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-	<h1>보드</h1>
 
-	
+
+<div>
 	<table>
 		<tr>
 			<th>번호</th>
@@ -31,7 +31,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button onclick="location.href='./write'"> 글쓰기 </button>
+	</div>	
+	<ul class="actions special">
 
+	<li ><button onclick="location.href='./write'" class="button"> 글쓰기</button></li>	
+</ul>
 </body>
 </html>
