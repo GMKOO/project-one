@@ -16,8 +16,15 @@ function del() {
 		location.href="./delete?bno=${dto.bno}";
 		
 	}
+	
 }
 
+function edit() {
+	
+	if(confirm("수정하시겠습니까?")) {
+		location.href="./edit?bno=${dto.bno}";
+	}
+}
 </script>
 </head>
 <body>
@@ -26,7 +33,7 @@ function del() {
 <!-- 2023-07-18 / 데이터베이스 구현 / 메뉴만들기, 글쓰기 -->
 	<div class="detail-content">
 		<div class="title">${dto.bno } / ${dto.btitle }
-		 <img class="update2" alt="" src="./img/update2.png"> &nbsp;
+		 <img class="update2" alt="" src="./img/update2.png" onclick="edit()"> &nbsp;
 		 
 		 <img class="delete2" alt="" src="./img/delete2.png" 
 		 onclick="del()" >

@@ -10,7 +10,8 @@
 		SELECT * FROM board ORDER BY bno DESC LIMIT 10 
 	</select>
 
-	<select id="detail" parameterType="String" resultType="boardDTO"> 
+
+	<select id="detail" parameterType="Integer" resultType="boardDTO"> 
 	SELECT * FROM board WHERE bno= #{bno} 
 	
 	
@@ -28,6 +29,13 @@
 	DELETE from Board WHERE bno=#{bno}
 	
 	</delete>
+	
+	<update id="edit" parameterType="boardDTO">
+	
+	UPDATE board SET btitle= #{btitle}, bcontent=#{bcontent}
+	WHERE bno=#{bno}
+	
+	</update>
 
 
 	</mapper>

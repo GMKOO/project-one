@@ -112,7 +112,7 @@
 										<h2><a href="#">Ante mattis<br />
 										interdum dolor</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="img/pic04.jpg" alt="" /></a>
+									<a href="#" class="image fit"><img src="img/123.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul class="actions special">
 										<li><a href="#" class="button">Full Story</a></li>
@@ -226,7 +226,7 @@
 					<div id="copyright">
 						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
-"C:/Users/user/Downloads/html5up-massively/assets"
+
 			</div>
 
 		<!-- Scripts -->

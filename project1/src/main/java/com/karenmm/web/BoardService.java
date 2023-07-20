@@ -41,7 +41,7 @@ public class BoardService {
 		return boardDAO.boardList();
 	}
 
-	public BoardDTO detail(String bno) {
+	public BoardDTO detail(int bno) {
 
 		BoardDTO dto = boardDAO.detail(bno);
 
@@ -78,5 +78,12 @@ public class BoardService {
 		
 		
 	}
+
+	public void edit(BoardDTO dto) {
+		boardDAO.edit(dto);
+		
+	}
+
+
 
 }

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/board.css">
+
 </head>
 <body>
 <%@ include file="menu.jsp" %>

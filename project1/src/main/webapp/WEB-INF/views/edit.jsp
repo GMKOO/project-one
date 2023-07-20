@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글쓰기 Get</title>
+<title>글수정</title>
 <link rel="stylesheet" href="./css/write.css">
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -20,17 +20,19 @@
 <%@ include file="menu.jsp" %>
 
 <!-- 2023-07-18 / 데이터베이스 구현 / 메뉴만들기, 글쓰기 -->
-		<h1>글쓰기</h1>
+		<h1>글수정</h1>
+		${dto.bno }/ ${dto.btitle } / ${dto.bcontent } / ${dto.bdate } 
 	<div class="write-div">
 	
-	<form action="./write" method="post">
-		<input type="text" name="title">
+	<form action="./edit" method="post">
+		<input type="text" name="btitle" value="${dto.btitle }">
 		
 	
-		<textarea id="summernote" name="content"></textarea>
+		<textarea id="summernote" name="bcontent"> ${dto.bcontent }</textarea>
 
-		<button class="btn100" type="submit" > 글쓰기 </button>
-</form>	
+		<button class="btn100" type="submit" > 글수정 </button>
+		<input type="hidden" name= "bno" value = "${dto.bno }"> 
+		</form>	
 	
 	</div>
 	
