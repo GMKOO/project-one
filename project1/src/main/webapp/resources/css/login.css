@@ -7,7 +7,7 @@ html, body {
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("../img/bg.jpg");
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -15,7 +15,7 @@ html, body {
 }
 
 
-img.container {  	
+img.#container {  	
 	
   position: relative;
     width: 100%;
@@ -27,37 +27,61 @@ img.container {
 	
 }
 
-div.login-form {
-    position: absolute;
-    top: 60%;
-    left: 47.9%;
+
+
+
+
+button:hover {
+    background-color: #ff80c0;
+}
+
+
+.input1 { 
+	 width: 45%;
+	 height: 5%;
+	position: absolute;
+    top: 54.5%;
+    left:50.4%;
     transform: translate(-50%, -50%);
-    z-index: 1; /* input을 이미지 위로 겹치기 위해 z-index 설정 */
-    background-color: rgba(0, 0, 0, 0);
-   box-shadow:rgba(0, 0, 0, 0);
+    z-index: 1;
+ 
+  
+}
 
+.input2 {
+	width: 45%;
+	 height: 5%;
+	position: absolute;
+    top: 61%;
+    left: 50.4%;
+    transform: translate(-50%, -50%);
+     z-index: 1;
+
+}
+
+button { width: 45.2%;
+	 height: 6%;
+	position: absolute;
+    top: 69%;
+    left: 50.4%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     opacity: 0.1;
-}
-
-div.login-form input, .login-form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-
+   
+	}
 	
+.a1{
+	width: 45.2%;
+	 height: 6%;
+	  top: 76%;
+    left: 80%;
+	position: absolute;
+ text-decoration: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    font-size: small;
 }
 
-div.login-form button {
-
-}
-
-div.login-form button:hover {
-    background-color: #0056b3;
-}
-div  { 
-	
-	
-	
-}
 
 	

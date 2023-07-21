@@ -1,9 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <script>
-    function openLoginPage() {
-      window.open("./login", "_blank", "width=500, height=600");
-        }
+function openLoginPage() {
+
+	
+    window.open("./login", "_blank","width=500, height=600");
+  
+  }
+
+
+
+
+
+  
     </script>
 <link rel="stylesheet" href="./css/menu.css">
 	<nav>

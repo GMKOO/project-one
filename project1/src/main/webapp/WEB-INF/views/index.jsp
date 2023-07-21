@@ -9,6 +9,7 @@
 -->
 <html>
 	<head>
+		
 		<title>Koo</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -17,14 +18,14 @@
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
 	</head>
-	
+
 	<body class="is-preload">
 	<%@ include file="menu.jsp" %>
 	
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
-
+<%=request.getHeader("User-Agent") %>
 				<!-- Intro -->
 					<div id="intro">
 							<h1>코딩할래 나랑살래 <br>
