@@ -107,10 +107,9 @@ public class BoardController {
 		
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+	
+	
+	
 	
 	@PostMapping("/edit")
 	public String edit(BoardDTO dto) {
