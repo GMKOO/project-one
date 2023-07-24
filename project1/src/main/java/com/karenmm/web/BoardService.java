@@ -25,7 +25,7 @@ public class BoardService {
 	private Util util;
 
 	// 보드 리스트 불러오는 메소드
-	public List<Map<String, Object>> boardlist() {
+	public List<BoardDTO> boardlist() {
 
 //		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 //		
@@ -41,9 +41,9 @@ public class BoardService {
 		return boardDAO.boardList();
 	}
 
-	public BoardDTO detail(int bno) {
+	public BoardDTO detail(BoardDTO dto2) {
 
-		BoardDTO dto = boardDAO.detail(bno);
+		BoardDTO dto = boardDAO.detail(dto2);
 
 		// 검사 : .이 없거나, null 이면 실행 하지 않게 해주세요.
 		if (dto.getBip() != null && dto.getBip().indexOf(".") != -1) {

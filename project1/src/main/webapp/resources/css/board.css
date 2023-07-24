@@ -60,3 +60,15 @@ body {
 	height: 100%;
 	background-image: url("../img/bg.jpg");
 }
+
+.button {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	
+}
+
+li {
+	
+	width: 100%;
+}

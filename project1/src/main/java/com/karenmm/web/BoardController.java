@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,28 +46,52 @@ public class BoardController {
 	}
 
 	@GetMapping("/write")
-	public String write() {
-		return "write";
+	public String write(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		
+		if (session.getAttribute("mname") != null) {
+			return "write";
+			
+		}else { 
+			
+			return "redirect:/login";
+		}
+		
 	}
 
 
 	@PostMapping("/write")
-	public String write(HttpServletRequest request) {
+	public String write2(HttpServletRequest request) {
 		// 사용자가 입력한 데이터 변수에 담기
 		// Service > DAO > mybatis > DB로 보내서 저장하기
 
 //		System.out.println(request.getParameter("title"));
 //		System.out.println(request.getParameter("content"));
 
-		BoardDTO dto = new BoardDTO();
-		dto.setBtitle(request.getParameter("title"));
-		dto.setBcontent(request.getParameter("content"));
+		 HttpSession session = request.getSession();
+		 if(session.getAttribute("mid") != null) {
+			 
+			 
+				BoardDTO dto = new BoardDTO();
+				dto.setBtitle(request.getParameter("title"));
+				dto.setBcontent(request.getParameter("content"));
+				//세션에서 불러오겠습니다.
+				dto.setM_id((String)session.getAttribute("mid")); // 이건 임시로 적었습니다.
+				dto.setM_name((String) session.getAttribute("mname"));
+				
 
-		dto.setBwrite("홍길동");
+				boardService.write(dto);
 
-		boardService.write(dto);
-
-		return "redirect:board";
+				return "redirect:board";
+			 
+			 //로그인 했습니다. = 아래 로직을 여기로 가져오세요.
+		 } else {  
+			 
+			 //로그인 안했어요
+			 return "redirect:/login";
+		 }
+		
 	}
 
 	@GetMapping("/board")
@@ -88,8 +113,13 @@ public class BoardController {
 		
 //		System.out.println("bno : " + bno);
 
-		BoardDTO dto = boardService.detail(bno);
-		model.addAttribute("dto", dto);
+		//DTO로 변경합니다.
+		BoardDTO dto = new BoardDTO();
+		dto.setBno(bno);
+		// dto.setM_id(null); 글 상세보기에서는 mid가 없어도됩니다.
+		
+		BoardDTO result = boardService.detail(dto);
+		model.addAttribute("dto", result);
 
 		return "detail";
 	}
@@ -99,9 +129,19 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView("edit"); // edit.jsp
 		//데이터베이스에 bno를 보내서 dto를 얻어 옵니다.
 	
-		BoardDTO dto = boardService.detail(util.strToInt(request.getParameter("bno")));
+		HttpSession session = request.getSession();
+		BoardDTO dto= new BoardDTO();
+		dto.setBno(util.strToInt(request.getParameter("bno")));
+		
+		dto.setM_id((String)session.getAttribute("mid"));
+		
+		BoardDTO result = boardService.detail(dto);
+		//내글만 수정 할수 있도록 세션에 있는 mid도 보냅니다.
+	
+		
+		
 		//mv에 실어보냅니다.
-		mv.addObject("dto", dto);
+		mv.addObject("dto", result);
 
 		return mv;
 		

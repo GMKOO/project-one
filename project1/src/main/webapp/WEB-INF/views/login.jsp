@@ -40,18 +40,16 @@
 <script type="text/javascript">
 
 function openLoginPage() {
-    var newWindow = window.open("./login", "_blank","width=500, height=600,top=200,left=700");
-  
-    
-    if () {
-        newWindow.close();
-        window.location.reload();
+	
+	
+	var newWindow = window.open("./login", "_blank","width=500, height=600,top=200,left=700");
 
+    newWindow.onunload = function() {
+        newwindow.location.reload(); // 기존 창 새로고침
+    };
 
- if () {
-    Window.close();
-    window.location.reload(); // 현재 창 새로고침
-}
+ }
+
 
  </script>
 
