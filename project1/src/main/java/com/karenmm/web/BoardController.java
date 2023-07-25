@@ -20,46 +20,55 @@ public class BoardController {
 
 	// Autowired말고 Resource로 연결
 	// Autowire 스프링에서 지원하고 자동으로 타입맞는걸 찾아온다.
-	
+
 	@Autowired
-	private Util util; //우리가 만든 숫자변환을 사용하기 위해서 객체 연결.( 일반적인 객체생성도 가능)
-	
-	
-	
+	private Util util; // 우리가 만든 숫자변환을 사용하기 위해서 객체 연결.( 일반적인 객체생성도 가능)
+
 	@Resource(name = "boardService")
 	private BoardService boardService;
 
 	@GetMapping("/delete")
-	public String delete(
-			@RequestParam(value = "bno",required = true ,defaultValue = "0") int bno){ 
-		//HttpServletRequest의 getParameter();
-		//dto
-//		System.out.println("bno :1 " + bno);
-		BoardDTO dto = new BoardDTO();
-		dto.setBno(bno);
-//		dto.setBwrite(null);
-		//추ㅜ후 로그인을 하면 사용자의 정보도 담아서 보냅니다
+	public String delete(@RequestParam(value = "bno", required = true, defaultValue = "0") int bno , HttpSession session) {
 		
-		boardService.delete(dto);		
+		if(session.getAttribute("mid")!=null) {
+			BoardDTO dto = new BoardDTO();
+			dto.setBno(bno);
+			dto.setM_id((String)session.getAttribute("mid"));
+//			dto.setBwrite(null);
+			// 추ㅜ후 로그인을 하면 사용자의 정보도 담아서 보냅니다
 
-		return "redirect:board"; // 삭제를 완료한 후에 다시 보드로
+			boardService.delete(dto);
+			return "redirect:board";
+			
+		} else {
+			
+			
+			return "redirect:/login";
+			
+		}
+		
+//		System.out.println("mid : " + session.getAttribute("mid"));
+		
+		// HttpServletRequest의 getParameter();
+		// dto
+//		System.out.println("bno :1 " + bno);
+
+	 // 삭제를 완료한 후에 다시 보드로
 	}
 
 	@GetMapping("/write")
 	public String write(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		
-		
+
 		if (session.getAttribute("mname") != null) {
 			return "write";
-			
-		}else { 
-			
+
+		} else {
+
 			return "redirect:/login";
 		}
-		
-	}
 
+	}
 
 	@PostMapping("/write")
 	public String write2(HttpServletRequest request) {
@@ -69,29 +78,36 @@ public class BoardController {
 //		System.out.println(request.getParameter("title"));
 //		System.out.println(request.getParameter("content"));
 
-		 HttpSession session = request.getSession();
-		 if(session.getAttribute("mid") != null) {
-			 
-			 
-				BoardDTO dto = new BoardDTO();
-				dto.setBtitle(request.getParameter("title"));
-				dto.setBcontent(request.getParameter("content"));
-				//세션에서 불러오겠습니다.
-				dto.setM_id((String)session.getAttribute("mid")); // 이건 임시로 적었습니다.
-				dto.setM_name((String) session.getAttribute("mname"));
+		HttpSession session = request.getSession();
+		if (session.getAttribute("mid") != null) {
+
+			BoardDTO dto = new BoardDTO();
+			dto.setBtitle(request.getParameter("title"));
+			dto.setBcontent(request.getParameter("content"));
+			
+			if(dto.getBcontent().isEmpty() || dto.getBtitle().isEmpty() ||
+					dto.getBcontent().length()<10 || dto.getBtitle().length()<3) {
 				
+				
+				return "redirect:/write";
+				
+				
+			}
+			// 세션에서 불러오겠습니다.
+			dto.setM_id((String) session.getAttribute("mid")); // 이건 임시로 적었습니다.
+			dto.setM_name((String) session.getAttribute("mname"));
 
-				boardService.write(dto);
+			boardService.write(dto);
 
-				return "redirect:board";
-			 
-			 //로그인 했습니다. = 아래 로직을 여기로 가져오세요.
-		 } else {  
-			 
-			 //로그인 안했어요
-			 return "redirect:/login";
-		 }
-		
+			return "redirect:board";
+
+			// 로그인 했습니다. = 아래 로직을 여기로 가져오세요.
+		} else {
+
+			// 로그인 안했어요
+			return "redirect:/login";
+		}
+
 	}
 
 	@GetMapping("/board")
@@ -102,55 +118,75 @@ public class BoardController {
 		// 모델은 값 만 보내고 모델앤뷰는 ....
 		return "board";
 	}
+	
+	@GetMapping("/warning")
+	public String warning(Model model) {
+		// 서비스에서 값 가져오기
+		
+
+		// 모델은 값 만 보내고 모델앤뷰는 ....
+		return "warning";
+	}
 
 	// 파라미터로 들어오는 값 잡기
 	@GetMapping("/detail")
 	public String detail(HttpServletRequest request, Model model) {
 		// bno에 요청하는 값이 있습니다. 이 값을 db까지 보내겠습니다.
 //		String bno = request.getParameter("bno");
-		
+
 		int bno = util.strToInt(request.getParameter("bno"));
-		
+
 //		System.out.println("bno : " + bno);
 
-		//DTO로 변경합니다.
+		// DTO로 변경합니다.
 		BoardDTO dto = new BoardDTO();
 		dto.setBno(bno);
 		// dto.setM_id(null); 글 상세보기에서는 mid가 없어도됩니다.
-		
+
 		BoardDTO result = boardService.detail(dto);
 		model.addAttribute("dto", result);
 
 		return "detail";
 	}
-	
+
 	@GetMapping("/edit")
 	public ModelAndView edit(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("edit"); // edit.jsp
-		//데이터베이스에 bno를 보내서 dto를 얻어 옵니다.
-	
-		HttpSession session = request.getSession();
-		BoardDTO dto= new BoardDTO();
-		dto.setBno(util.strToInt(request.getParameter("bno")));
-		
-		dto.setM_id((String)session.getAttribute("mid"));
-		
-		BoardDTO result = boardService.detail(dto);
-		//내글만 수정 할수 있도록 세션에 있는 mid도 보냅니다.
-	
-		
-		
-		//mv에 실어보냅니다.
-		mv.addObject("dto", result);
+		ModelAndView mv = new ModelAndView();
+		// 객체생성 () 괄호안으로 jsp이동"redirect:/login"
+		// 데이터베이스에 bno를 보내서 dto를 얻어 옵니다.
 
+		HttpSession session = request.getSession();
+		if (session.getAttribute("mid") != null) {
+
+			// if문으로 만들어주세요.
+			// if(
+
+			BoardDTO dto = new BoardDTO();
+			dto.setBno(util.strToInt(request.getParameter("bno")));
+
+			dto.setM_id((String) session.getAttribute("mid"));
+
+			BoardDTO result = boardService.detail(dto);
+
+			if (result != null) {
+				// 내 글을 수정 했습니다.
+				mv.addObject("dto", result); // mv에 실어보냅니다
+				mv.setViewName("edit"); // 이동할 jsp명을 적어줍니다.
+			} else {// 다른 사람 글이라면 null입니다 . 경고창으로 이동 합니다.
+				mv.setViewName("warning");
+			}
+
+			// 내글만 수정 할수 있도록 세션에 있는 mid도 보냅니다.
+
+			// mv에 실어보냅니다.
+
+		} else {
+			mv.setViewName("redirect:/login");
+
+		}
 		return mv;
-		
 	}
-	
-	
-	
-	
-	
+
 	@PostMapping("/edit")
 	public String edit(BoardDTO dto) {
 //		System.out.println(dto.getBcontent());
@@ -158,8 +194,8 @@ public class BoardController {
 //		System.out.println(dto.getBno());
 		boardService.edit(dto);
 //		System.out.println("map : " + map);
-		
-		return "redirect:detail?bno="+dto.getBno(); // 보드로 이동하게 해주세요
+
+		return "redirect:detail?bno=" + dto.getBno(); // 보드로 이동하게 해주세요
 	}
 //	
 }

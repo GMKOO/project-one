@@ -42,20 +42,29 @@ public class BoardService {
 	}
 
 	public BoardDTO detail(BoardDTO dto2) {
-
+				// 좋아요수 +1하기 기능을 넣어주겠습니다.
+		boardDAO.likeUp(dto2);
+		
+		
 		BoardDTO dto = boardDAO.detail(dto2);
 
+		if(dto!=null) {
+			//내 글이 아닐때 null 들어옵니다. 즉 null이 아닐때라고 검사해주세요.
+			if (dto.getBip() != null && dto.getBip().indexOf(".") != -1) {
+
+				// 여기서 ip 뽑아 올수 잇쬬
+				// ip
+				String ip = dto.getBip();
+				String[] ipArr = ip.split("[.]");
+
+				ipArr[1] = "♥";
+				dto.setBip(String.join(".", ipArr));
+			
+		}
+		
+		
 		// 검사 : .이 없거나, null 이면 실행 하지 않게 해주세요.
-		if (dto.getBip() != null && dto.getBip().indexOf(".") != -1) {
-
-			// 여기서 ip 뽑아 올수 잇쬬
-			// ip
-			String ip = dto.getBip();
-			String[] ipArr = ip.split("[.]");
-
-			ipArr[1] = "♥";
-			dto.setBip(String.join(".", ipArr));
-
+		
 		}
 		return dto;
 	}

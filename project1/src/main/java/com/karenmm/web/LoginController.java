@@ -28,6 +28,9 @@ public class LoginController {
 
 		LoginDTO dto = new LoginDTO();
 		dto.setM_id(request.getParameter("id"));
+		
+	
+		
 		dto.setM_pw(request.getParameter("pw"));
 		// id/pw 보냈을때
 		//이름 + count(*) 올려라
@@ -44,7 +47,7 @@ public class LoginController {
 		session.setAttribute("mname", result.getM_name());
 		session.setAttribute("mid", request.getParameter("id"));
 		//세션 : 서버, 쿠키 : 클라이언트(브라우저)에 보관 됩니다.
-		return "redirect:index";
+		return "redirect:/index";
 		// 정상적 로그인했다면 인덱스로가기
 	
 	} else {
