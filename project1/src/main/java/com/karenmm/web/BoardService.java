@@ -25,7 +25,7 @@ public class BoardService {
 	private Util util;
 
 	// 보드 리스트 불러오는 메소드
-	public List<BoardDTO> boardlist() {
+	public List<BoardDTO> boardlist(PageDTO page) {
 
 //		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 //		
@@ -38,7 +38,7 @@ public class BoardService {
 //			map.put("blike", i * 10 );
 //			list.add(map);
 
-		return boardDAO.boardList();
+		return boardDAO.boardList(page);
 	}
 
 	public BoardDTO detail(BoardDTO dto2) {
@@ -91,6 +91,11 @@ public class BoardService {
 	public void edit(BoardDTO dto) {
 		boardDAO.edit(dto);
 		
+	}
+
+	public int totalCount() {
+		
+		return boardDAO.totalCount();
 	}
 
 

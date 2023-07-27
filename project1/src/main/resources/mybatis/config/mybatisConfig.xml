@@ -7,5 +7,6 @@
 	<typeAliases>
 		<typeAlias type="com.karenmm.web.BoardDTO" alias="boardDTO"/>
 			<typeAlias type="com.karenmm.web.LoginDTO" alias="loginDTO"/>
+			<typeAlias type="com.karenmm.web.PageDTO" alias="pageDTO"/>
 	</typeAliases>
 </configuration>

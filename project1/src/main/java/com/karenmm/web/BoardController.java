@@ -1,5 +1,6 @@
 package com.karenmm.web;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 public class BoardController {
@@ -111,9 +114,39 @@ public class BoardController {
 	}
 
 	@GetMapping("/board")
-	public String board(Model model) {
+	public String board(@RequestParam(value= "pageNo",required=false,defaultValue = "1")
+						int pageNo, Model model) {
 		// 서비스에서 값 가져오기
-		model.addAttribute("list", boardService.boardlist());
+		//페이지네이션인포 -> 값 넣고 -> DB -> JSP
+		//PaginationInfo에 필수 정보를 넣어준다.
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo); //현재페이지정보
+		paginationInfo.setRecordCountPerPage(10); //한페이지 게시되는 게시물 건수
+		paginationInfo.setPageSize(10); //페이징 리스트의 사이즈
+		
+		//전체 글수 가져오는 명령문장
+		int totalCount=boardService.totalCount();
+		paginationInfo.setTotalRecordCount(totalCount); // 전체 게실물 건 수
+		
+		int firstRecordIndex = paginationInfo.getFirstRecordIndex(); // 시작위치
+		int recordCountPerPage = paginationInfo.getRecordCountPerPage(); // 페이지당 몇개?
+		
+		System.out.println(firstRecordIndex);
+		System.out.println(recordCountPerPage);
+		System.out.println(pageNo);
+		System.out.println(totalCount);
+		
+		PageDTO page = new PageDTO();
+		page.setFirstRecordIndex(firstRecordIndex);
+		page.setRecordCountPerPage(recordCountPerPage);
+		
+		//보드서비스 수정합니다.
+		List<BoardDTO> list = boardService.boardlist(page);
+		
+		
+		
+		model.addAttribute("list", list);
+		model.addAttribute("paginationInfo", paginationInfo);
 
 		// 모델은 값 만 보내고 모델앤뷰는 ....
 		return "board";

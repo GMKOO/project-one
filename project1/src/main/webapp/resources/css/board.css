@@ -72,3 +72,19 @@ li {
 	
 	width: 100%;
 }
+
+a{
+text-decoration: none;
+color: white;
+
+}
+
+.img {
+
+	text-decoration: none;
+background-color:white;
+	width: 3%;
+	height: 3%;
+	
+	
+}
