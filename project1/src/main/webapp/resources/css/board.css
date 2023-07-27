@@ -79,12 +79,44 @@ color: white;
 
 }
 
-.img {
 
-	text-decoration: none;
-background-color:white;
-	width: 3%;
-	height: 3%;
+
+footer {
+		width: 100%;
+		color: #717981;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
 	
 	
-}
+		cursor: default;
+	
+		margin: 0 auto;
+	
+		max-width: 72rem;
+		z-index: 2;
+	}
+	
+	footer a:hover {
+				border-bottom-color: transparent;
+				color: #18bfef !important;
+			}
+			
+			footer .pagination a, #footer .pagination span {
+			border-color: #e2e2e2;
+		}
+
+		footer .pagination a {
+			color: white; !important;
+			
+		}
+
+			footer .pagination a:hover {
+				color: #18bfef !important;
+				border-color: #18bfef;
+				z-index: 1;
+			}
+
+		
+		

@@ -1,7 +1,7 @@
-package com.karenmm.web;
+package com.karenmm.board;
 
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.karenmm.util.PageDTO;
+import com.karenmm.util.Util;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -62,6 +65,8 @@ public class BoardController {
 	@GetMapping("/write")
 	public String write(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		
+		
 
 		if (session.getAttribute("mname") != null) {
 			return "write";
@@ -83,10 +88,13 @@ public class BoardController {
 
 		HttpSession session = request.getSession();
 		if (session.getAttribute("mid") != null) {
-
+		
 			BoardDTO dto = new BoardDTO();
 			dto.setBtitle(request.getParameter("title"));
 			dto.setBcontent(request.getParameter("content"));
+			dto.setUuid(UUID.randomUUID().toString());
+			
+
 			
 			if(dto.getBcontent().isEmpty() || dto.getBtitle().isEmpty() ||
 					dto.getBcontent().length()<10 || dto.getBtitle().length()<3) {
@@ -99,6 +107,7 @@ public class BoardController {
 			// 세션에서 불러오겠습니다.
 			dto.setM_id((String) session.getAttribute("mid")); // 이건 임시로 적었습니다.
 			dto.setM_name((String) session.getAttribute("mname"));
+			
 
 			boardService.write(dto);
 

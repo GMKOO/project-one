@@ -5,7 +5,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 			<!-- For Pagination Tag -->	 
-	<bean id="imageRenderer" class="com.karenmm.util.ImagePaginationRenderer"/>
+	<bean id="imageRenderer" class="com.karenmm.util.CustomPaginationRenderer"/>
  
 	<bean id="textRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>
  

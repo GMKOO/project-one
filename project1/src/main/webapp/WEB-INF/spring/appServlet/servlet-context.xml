@@ -23,7 +23,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.karenmm.web" />
+	<context:component-scan base-package="com.karenmm.*" />
 	
 	<beans:import	resource="classpath:/spring/*-context.xml"/>
 	

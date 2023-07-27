@@ -1,18 +1,15 @@
-package com.karenmm.web;
+package com.karenmm.board;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestAttribute;
+
+import com.karenmm.util.PageDTO;
+import com.karenmm.util.Util;
 
 @Service("boardService")
 public class BoardService {
@@ -80,6 +77,7 @@ public class BoardService {
 
 		dto.setBip(util.getIp()); // 얻어온 ip도 저장해서 데이터베이스로 보내겠습니
 		boardDAO.write(dto);
+
 	}
 
 	public void delete(BoardDTO dto) {

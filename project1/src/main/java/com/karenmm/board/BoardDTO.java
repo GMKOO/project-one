@@ -1,9 +1,17 @@
-package com.karenmm.web;
+package com.karenmm.board;
 
 public class BoardDTO {
 
 	private int bno, blike;
-	private String btitle, m_name,m_id, bcontent, bdate, bip;
+	private String btitle, m_name,m_id, bcontent, bdate, bip,uuid;
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 
 	public String getM_id() {
 		return m_id;

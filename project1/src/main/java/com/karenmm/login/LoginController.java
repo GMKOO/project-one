@@ -1,4 +1,4 @@
-package com.karenmm.web;
+package com.karenmm.login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +21,11 @@ public class LoginController {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
+	}
+	
+	@GetMapping("/join")
+	public String join() {
+		return "join";
 	}
 	
 	@PostMapping("/login")

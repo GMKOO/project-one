@@ -44,10 +44,12 @@
 				<td class="td1">${row.blike }</td>
 			</tr>
 		</c:forEach>
+		
+		
 	</table>
 	<div id="img">
 	<ui:pagination paginationInfo = "${paginationInfo}"
-	type="image"
+	type="text"
 	jsFunction="linkPage"/>
 	</div>
 	</c:when>
@@ -57,11 +59,26 @@
 	</div>	
 	<ul class="actions special">
 
-로그인한 이름 : ${sessionScope.mname} / ${sessionScope.mid}
+<!-- 로그인한 이름 : ${sessionScope.mname} / ${sessionScope.mid} -->
 <c:if test="${sessionScope.mname ne null}">
 	<li ><button onclick="location.href='./write'" class="button"> 글쓰기</button></li>	
 	
 	</c:if>
 </ul>
 </body>
+
+<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a onclick=>처음으로</a>&#160;
+									<a href="#" class="page active">1</a>
+									<a href="#" class="page">2</a>
+									<a href="#" class="page">3</a>
+									<span class="extra">&hellip;</span>
+									<a href="#" class="page">8</a>
+									<a href="#" class="page">9</a>
+									<a href="#" class="page">10</a>
+									<a href="#" class="next">Next</a>
+								</div>
+							</footer>
 </html>

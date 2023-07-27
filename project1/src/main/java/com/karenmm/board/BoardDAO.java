@@ -1,13 +1,14 @@
-package com.karenmm.web;
+package com.karenmm.board;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.karenmm.util.PageDTO;
 
 
 // Inject 사용해보기

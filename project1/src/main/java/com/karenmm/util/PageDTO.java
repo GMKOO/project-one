@@ -1,4 +1,4 @@
-package com.karenmm.web;
+package com.karenmm.util;
 
 public class PageDTO {
 	

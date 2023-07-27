@@ -1,4 +1,4 @@
-package com.karenmm.web;
+package com.karenmm.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

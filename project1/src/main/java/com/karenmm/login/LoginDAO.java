@@ -1,4 +1,4 @@
-package com.karenmm.web;
+package com.karenmm.login;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,8 +5,8 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.karenmm.web.BoardDTO" alias="boardDTO"/>
-			<typeAlias type="com.karenmm.web.LoginDTO" alias="loginDTO"/>
-			<typeAlias type="com.karenmm.web.PageDTO" alias="pageDTO"/>
+		<typeAlias type="com.karenmm.board.BoardDTO" alias="boardDTO"/>
+			<typeAlias type="com.karenmm.login.LoginDTO" alias="loginDTO"/>
+			<typeAlias type="com.karenmm.util.PageDTO" alias="pageDTO"/>
 	</typeAliases>
 </configuration>

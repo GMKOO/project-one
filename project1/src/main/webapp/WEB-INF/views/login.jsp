@@ -70,8 +70,9 @@
 			
 			<input class="input2"
 			name="pw" id="pw" type="password" placeholder="비밀번호"
-			required="required" maxlength="20"> <a href="./login"
-			class="a1">회원가입</a> <a href="./login" class="a2">아이디/비밀번호 찾기</a>
+			required="required" maxlength="20">
+			 <a href="./join"  class="a1">회원가입</a> 
+			<a href="./login"  class="a2">아이디/비밀번호 찾기</a>
 		<button type="button" class="login" onclick="check()">로그인</button>
 		<span id="msg">1</span>
 		
