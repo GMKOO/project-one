@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+body {
+	background-color: white;
+	display: flex; /* Flex 컨테이너로 설정 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  height: 100vh;
+	
+}
+.joinId {
+	
+width:100%;
+
+	min-width: 200px;
+	max-width: 300px;
+	min-height: 20px;
+	margin-bottom: 20px;
+	 border-radius: 20;
+}
+.joinPw {	
+width:100%;
+	min-width: 200px;
+	max-width: 300px;
+	min-height: 20px;
+	margin-bottom: 20px;	
+ border-radius: 20;
+	
+}
+
+.joinPwck {
+	
+		
+width:100%;
+	min-width: 200px;
+	max-width: 300px;
+		min-height: 20px;
+	margin-bottom: 20px;
+	 border-radius: 20;
+}
+
+.joinName {
+	width:100%;
+	min-width: 200px;
+	max-width: 300px;
+		min-height: 20px;
+	margin-bottom: 20px;
+	 border-radius: 20;
+}
+
+.joinAddress {
+	
+	width:100%;
+	min-width: 200px;
+	max-width: 300px;
+		min-height: 20px;
+	margin-bottom: 20px;
+}
+.mbti { 
+	width:100%;
+	min-width: 100px;
+	max-width: 300px;
+		min-height: 20px;
+	margin-bottom: 20px;
+	
+	
+}
+.joinNum {
+	width:100%;
+	min-width: 200px;
+	max-width: 300px;
+		min-height: 20px;
+	margin-bottom: 20px;
+	 border-radius: 20;
+}
+
+.joinS { 
+	width: calc(100% - 30px);
+	min-width: 30px;
+ border-radius: 20;
+		min-height: 20px;
+	margin-bottom: 20px;
+	
+}
+.button1 {
+ border-radius: 20;
+	min-height: 30px;
+	margin-top: 20px;
+	
+}
+
+h1 { 
+	 text-align: center;
+	
+	
+}
+
+.login {	
+	
+	background-color: black;
+	color: white;
+ border-radius: 20;
+	
+}

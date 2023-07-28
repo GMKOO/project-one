@@ -27,7 +27,9 @@
 		<input type="text" name="title">
 		
 	
-		<textarea id="summernote" name="content"></textarea>
+		<textarea id="summernote" name="content">
+		
+		 </textarea>
 
 		<button class="btn100" type="submit" > 글쓰기 </button>
 </form>	

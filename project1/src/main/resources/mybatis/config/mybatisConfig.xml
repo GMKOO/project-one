@@ -8,5 +8,6 @@
 		<typeAlias type="com.karenmm.board.BoardDTO" alias="boardDTO"/>
 			<typeAlias type="com.karenmm.login.LoginDTO" alias="loginDTO"/>
 			<typeAlias type="com.karenmm.util.PageDTO" alias="pageDTO"/>
+		<typeAlias type="com.karenmm.login.JoinDTO" alias="joinDTO"/>
 	</typeAliases>
 </configuration>
