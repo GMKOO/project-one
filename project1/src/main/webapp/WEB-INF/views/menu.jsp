@@ -37,8 +37,7 @@ function openLoginPage() {
 	<ul>
 		<li onclick="link('')">Main</li>
 		<li onclick="link('board')">Board</li>
-	
-		<li onclick="link('mooni')">members</li>
+		<li onclick="link('members')">Members</li>
 
 
 

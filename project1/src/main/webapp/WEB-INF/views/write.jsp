@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글쓰기 Get</title>
+<title>글쓰기</title>
+
 <link rel="stylesheet" href="./css/write.css">
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -19,8 +20,12 @@
 <body>
 <%@ include file="menu.jsp" %>
 
+
 <!-- 2023-07-18 / 데이터베이스 구현 / 메뉴만들기, 글쓰기 -->
 		<h1>글쓰기</h1>
+		<button class="btn btn-warning"> 버튼 </button>
+
+		
 	<div class="write-div">
 	
 	<form action="./write" method="post">
@@ -31,7 +36,7 @@
 		
 		 </textarea>
 
-		<button class="btn100" type="submit" > 글쓰기 </button>
+		<button class="btn100 btn btn-primary" type="submit" > 글쓰기 </button>
 </form>	
 	
 	</div>
@@ -40,7 +45,7 @@
 	
 	
 	<script type="text/javascript">
-	/* JQyery문법 : 문서가 모두 로딩되었다면, 익명함수를 실행하세요*/
+	/* JQuery문법 : 문서가 모두 로딩되었다면, 익명함수를 실행하세요*/
 	$(document).ready(function() {
   $('#summernote').summernote();
   
