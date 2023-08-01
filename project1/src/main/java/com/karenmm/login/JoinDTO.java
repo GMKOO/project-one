@@ -1,5 +1,7 @@
 package com.karenmm.login;
 
+
+
 public class JoinDTO {
 	private int gender,no;
 	 public int getNo() {

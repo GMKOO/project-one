@@ -5,6 +5,9 @@ public class LoginDTO {
 	private int m_no, m_grade , count;
 	private String m_id, m_pw, m_name, m_joindate, m_addr;
 	
+	
+	
+	
 	public int getCount() {
 		return count;
 	}
