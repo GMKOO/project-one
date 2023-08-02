@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="./css/join.css?version=0.4">
 <script src="./js/jquery-3.7.0.min.js"> </script>
 <script type="text/javascript">
-$(function(){
-	$("#idCheck").click(function(){
+/* $(function(){
+/* 	$("#idCheck").click(function(){
 		let id = $("#id").val();
 		if(id == "" || id.length <2) {
 			
@@ -21,6 +21,7 @@ $(function(){
 			$("#id").focus();
 			
 		} else {
+			let result = ""; // 결과값 찍기 
 			$.ajax({
 				url:"./checkID",
 				type: "post",
@@ -51,8 +52,59 @@ $(function(){
 		
 	});
 	
-	
-});
+	 */
+	 
+	 $(function(){
+		 $("#idCheck").click(function(){
+			let id = $("#id").val();
+			//console.log(id);
+			//console.log(id.length);
+			if(id == ""|| id.length <2) {
+				
+				$("#id").focus();
+				$("#resultMSG").text("아이디는 2글자 이상이어야 합니다.");
+				$("#resultMSG").css("color","red").css("font-weight","bold").css("font-size","15pt");
+				
+			} else { 
+				$.ajax({
+					
+					url : "./checkID", //
+					type : "post",
+					data : {"id" : id},
+				//	dataType : "html", html 타입 다음 json타입으로 진행
+					dataType : "json", // {result : 0}
+					success : function(data) {
+						//alert(data.result);
+					
+						//$("#resultMSG").text("성공시 결과값 : " + data);
+					if(data.result==1) { 
+						$("#resultMSG").text("이미 등록된 아이디 입니다.");
+						$("#resultMSG").css("color","red");
+						$("#id").css("background-color","red");
+						$("#id").css("color","white");
+						$("#id").focus();
+					} else {
+						$("#resultMSG").css("color","green");
+						$("#resultMSG").text("가입할 수 있습니다.");
+			
+						}
+					
+					},
+					
+					error: function(request,status,error){
+						$("#resultMSG").text("오류가 발생 했습니다. 가입할 수 없습니다.");
+					}
+					
+					
+			
+				}); //  ajax 시작 선언
+			
+			}
+			return false; //  멈추기 
+		 
+		 });
+	 });
+
 
 </script>
 
@@ -69,7 +121,7 @@ $(function(){
 				required="required" maxlength="20" onchange="checkID()">
 			
 				<button id="idCheck"> 중복검사 </button>
-				<span id="resultMSG"></span>
+				<P><span id="resultMSG"></span></p>
 				
 		</div>
 		<div>

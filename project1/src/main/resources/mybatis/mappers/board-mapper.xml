@@ -18,6 +18,8 @@
 	
 	
 	</select>
+	
+	
 
 
 	<select id="detail" parameterType="boardDTO"

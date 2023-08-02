@@ -1,6 +1,7 @@
 package com.karenmm.login;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,17 @@ public class LoginService {
 	public List<JoinDTO> members() {
 		return loginDAO.members();
 	}
+
+	public int checkID(String id) {
+		return loginDAO.checkID(id);
+	}
+
+	public List<Map<String, Object>> boardList2() {
+		return loginDAO.boardList2();
+	}
+
+
+		
+	
 
 }

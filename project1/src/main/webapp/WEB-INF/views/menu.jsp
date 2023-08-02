@@ -38,6 +38,7 @@ function openLoginPage() {
 		<li onclick="link('')">Main</li>
 		<li onclick="link('board')">Board</li>
 		<li onclick="link('members')">Members</li>
+		<li onclick="link('board2')">Ajax</li>
 
 
 

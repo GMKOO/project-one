@@ -23,6 +23,14 @@
 	
 
 	</select>
+	
+	<select id="boardList2" resultType="Map"> 
+		SELECT *
+		FROM boardview 
+		LIMIT 0,10
+	
+	
+	</select>
 
 	<insert id="join" parameterType="joinDTO">
 	INSERT INTO members (m_id,m_pw,m_name,m_addr,m_birth,m_mbti,m_gender)
@@ -33,6 +41,13 @@
 	<select id="members" resultMap="join">
 	
 	SELECT * FROM members
+	
+	
+	</select>
+	
+	<select id="checkID" parameterType="String" resultType="Integer">
+	
+	SELECT COUNT(*) FROM members WHERE m_id= #{id}
 	
 	
 	</select>
