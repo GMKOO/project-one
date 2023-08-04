@@ -24,10 +24,10 @@
 
 	</select>
 	
-	<select id="boardList2" resultType="Map"> 
+	<select id="boardList2" parameterType="Integer" resultType="Map"> 
 		SELECT *
 		FROM boardview 
-		LIMIT 0,10
+		LIMIT #{i},10
 	
 	
 	</select>
@@ -50,6 +50,12 @@
 	SELECT COUNT(*) FROM members WHERE m_id= #{id}
 	
 	
+	</select>
+	
+	
+	<select id="totalCount" resultType="Integer">
+	
+	SELECT count(*) FROM boardview 
 	</select>
 
 

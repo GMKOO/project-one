@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -56,10 +56,27 @@ function edit() {
 		<div class="content">${dto.bcontent }</div>
 	</div>
 	
-	
-	
-	
-	
-	
 </body>
+ <hr>
+<footer>
+<h1>comment</h1>
+<div class="commentsList">
+<c:choose>
+	<c:when test="${fn:length(commentsList) gt 0}"> 
+	
+	<div class="comments"> 
+	<c:forEach items="${commentsList }" var="c">
+		${c.c_no }/ ${c.m_id } / ${c.m_name } / ${c.c_comment } / ${c.c_date } 
+	</c:forEach>
+	</div>
+ 	</c:when>
+<c:otherwise> <h1>댓글이 없어요</h1></c:otherwise>
+</c:choose>
+</div>
+</footer>
+	
+	
+	
+
+
 </html>

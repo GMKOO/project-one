@@ -1,6 +1,7 @@
 package com.karenmm.board;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -135,7 +136,7 @@ public class BoardController {
 		
 		//전체 글수 가져오는 명령문장
 		int totalCount=boardService.totalCount();
-		paginationInfo.setTotalRecordCount(totalCount); // 전체 게실물 건 수
+		paginationInfo.setTotalRecordCount(totalCount); // 전체 게시물 건 수
 		
 		int firstRecordIndex = paginationInfo.getFirstRecordIndex(); // 시작위치
 		int recordCountPerPage = paginationInfo.getRecordCountPerPage(); // 페이지당 몇개?
@@ -156,6 +157,7 @@ public class BoardController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("paginationInfo", paginationInfo);
+		
 
 		// 모델은 값 만 보내고 모델앤뷰는 ....
 		return "board";
@@ -184,10 +186,20 @@ public class BoardController {
 		BoardDTO dto = new BoardDTO();
 		dto.setBno(bno);
 		// dto.setM_id(null); 글 상세보기에서는 mid가 없어도됩니다.
-
+	
+		
 		BoardDTO result = boardService.detail(dto);
 		model.addAttribute("dto", result);
+		
+		if(result.getCommentcount() >0) {
+			
+			List<Map<String,Object>> commentsList = boardService.commentsList(bno);
+			model.addAttribute("commentsList", commentsList);
+			
+		}
+		
 
+	
 		return "detail";
 	}
 

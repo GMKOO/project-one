@@ -19,6 +19,15 @@
 	
 	</select>
 	
+	<select id="commentsList" parameterType="Integer" resultType="Map"> 
+		SELECT * FROM commentsview
+		
+		where bno=#{bno}
+	
+	
+	</select>
+	
+	
 	
 
 

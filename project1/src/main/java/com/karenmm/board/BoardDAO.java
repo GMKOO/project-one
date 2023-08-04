@@ -1,6 +1,7 @@
 package com.karenmm.board;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -55,6 +56,10 @@ public class BoardDAO {
 		public int totalCount() {
 			
 			return sqlSession.selectOne("board.totalCount","totalCount");
+		}
+
+		public List<Map<String, Object>> commentsList(int bno) {
+			return sqlSession.selectList("board.commentsList", bno);
 		}
 
 	
