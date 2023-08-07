@@ -90,8 +90,26 @@ public class ResttController {
 						       */
 		@PostMapping("/cdelR")
 		public String cdelR(@RequestParam Map<String,Object> map, HttpSession session) {
+			
+			//if문 추가하기
+			
 			int result = 0;
-			if(session.getAttribute("mid") != null) {
+			
+			System.out.println(map);
+			
+			map.put("mid", session.getAttribute("mid"));
+		
+			System.out.println(map); // bno, cno , mid 나타남
+			
+			result = boardService.cdel(map);
+			
+			JSONObject json = new JSONObject();
+			json.put("result",result);
+			
+			return json.toString();
+			
+		}
+		/*	if(session.getAttribute("mid") != null) {
 				 
 				 if(map.containsKey("bno")&& map.get("cno")!=null &&
 						 
@@ -102,9 +120,9 @@ public class ResttController {
 				 	result = boardService.cdel(map);
 				 	System.out.println("삭제결과: " + result);
 			
-			 }
-			return result+"";
-		}
+			 } */
+			 // return result+"";
+	
 						
 		
 		

@@ -1,118 +1,116 @@
 @charset "UTF-8";
 
-
-
 .detail-content{
-	margin: 0 auto;
-
-	
-	width: 800px;
-	height: auto;
-	background-color: gray;
-	padding: 10px;
-	box-sizing: border-box;
+   margin: 0 auto;
+   width: 800px;
+   height: auto;
+   background-color: #dfdfdf;
+   padding: 10px;
+   box-sizing: border-box;
 }
 .title{
-	width: 100%;
-	height: 50px;
-	margin-top:50px;
-	line-height:50px;
-	font-size: large;
+   width: 100%;
+   height: 50px;
+   line-height:50px;
+   font-size: large;
 }
 .name-bar{
-	width: 100%;
-	border-bottom: 1px solid black;
-	background-color: #c0c0c0;
-	height: 80px;
-	padding: 20px;
-	box-sizing: border-box;
+   width: 100%;
+   border-bottom: 1px solid black;
+   background-color: #c0c0c0;
+   height: 80px;
+   padding: 20px;
+   box-sizing: border-box;
 }
 .name, .like, .date, .ip{
-	width: 50%;
-	height:20px;
-	float: left;
+   width: 50%;
+   height:20px;
+   float: left;
 }
 .name, .like{
-	border-bottom: 1px solid black;
+   border-bottom: 1px solid black;
 }
 .like, .ip{
-	text-align: right;
-		
+   text-align: right;
+      
 }
 .content{
-	width:100%;
-	min-height:500px; 
-	height: auto;
+   width:100%;
+   min-height:500px; 
+   height: auto;
+}
+.commentsList{
+   width: 100%;
+   height: auto;
+   margin: 5px 0px;
+   /* border-top: 10px solid white; */
+}
+.comments{
+   width: 100%;
+   height: auto;
+   margin: 5px 0px;   
+}
+
+.comment{
+   width: 100%;
+   min-height: 65px;
+   margin-bottom: 5px;
+}
+.commentHead{
+   width: 100%;
+   height: 32px;
+   line-height:32px;
+   background-color: #f1f1f1;
+}
+.cname{
+   width: 45%;
+   height: 100%;
+   float: left;
+   padding-left: 5px;
+}
+.cdate{
+   width: 45%;
+   height: 100%;
+   float: right;
+   text-align: right;
+   margin-right: 10px;
+}
+.cid{
+   height:0px;
+   visibility: hidden;
+}
+.commentBody{
+   width: 100%;
+   min-height: 35px;
+   height: auto;
+   padding-left: 5px;
+}
+
+.commentBox{
+   width: 100%;
+   height: 150px;
+   padding: 10px;
+   background-color: gray;
+   box-sizing: border-box;
+}
+#commenttextarea{
+   width: calc(100% - 110px);
+   height: 120px;
+   float: left;
+}
+#comment{   
+   width: 100px;
+   height: 130px;
+   float: right;
 }
 
 
-body {
-	position: absolute;
-	width: 100%;
-	height: 50%;
-	margin-top : 100px;
-	background-image: url("../img/bg.jpg");
-}
 
-.h1 {
-	margin: 0;
-	
 
-		color: white;
-		text-align: center;
-	
-}
-.commentsList{ 
-	
-	width:800px;
-	
-	height: 200px;
-	margin: 0 auto;
-	
-}
 
-.comments {
-		background-color:white;
-	width: 100%;
-	height: 10%;
-	
-	
-	color: black;
-	text-align: right;
-	
-	
-}
 
-.commentsback {
-	background-color: white;
-	width: 100%;
-	height: 20%;
 
-	border-top: solid 1px;
-magin : 0 auto;
-	color: black;
-		text-align: left;
-	
-}
 
-.title {
-	margin-top: 20px;
-	
-}
-.detail-content {
-	
-	background-color:white;
-	margin-top: 30px;
-}
 
-html {
-	width: 100%;
-	height: 100%;
-}
 
-nav {
-	
-	width: 100%;
-	height: 100%;
-}
 
