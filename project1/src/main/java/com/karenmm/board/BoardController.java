@@ -197,9 +197,6 @@ public class BoardController {
 			model.addAttribute("commentsList", commentsList);
 			
 		}
-		
-
-	
 		return "detail";
 	}
 
@@ -251,5 +248,41 @@ public class BoardController {
 
 		return "redirect:detail?bno=" + dto.getBno(); // 보드로 이동하게 해주세요
 	}
-//	
+	
+	//2023-08-07 입추, 프레임워크 프로그래밍
+	@GetMapping("/cdel")  // bno , cno
+	public String cdel(@RequestParam Map<String,Object> map,HttpSession session) {
+		
+		
+		//로그인여부검사
+		if (session.getAttribute("mid") != null) {
+			 //값 들어왔는지 여부 검사
+			
+		
+			if(map.containsKey("bno")&& map.get("cno")!=null &&
+			 !(map.get("bno").equals("")) && !(map.get("cno").equals(""))
+			&& util.isNum(map.get("bno")) && util.isNum(map.get("cno"))) 
+			{
+			 map.put("mid", session.getAttribute("mid"));
+			 int result = boardService.cdel(map);
+			 System.out.println("삭제결과:" + result);
+			}
+			//System.out.println("bno");
+			//System.out.println(map.get("cno").equals(null));
+			//System.out.println(map.get("cno").equals(""));
+			
+			//if(util.isNum(map.get("bno")) && util.isNum(map.get("cno"))) {
+			//	System.out.println("여기로 들어왔습니다.");
+			
+				
+			}
+			
+		return "redirect:/detail?bno=" +map.get("bno"); 
+		}
+		//값 들어왔는지 여부검사
+		
+		
+		
 }
+//	
+

@@ -43,7 +43,12 @@ public class LoginController {
 			return "redirect:/join";
 		}
 	}
-
+	//자바스크립트로 만든것.
+		@GetMapping("/join2")
+		public String join2() {
+			return "join2";
+		}
+	
 	@PostMapping("/login")
 	public String login(HttpServletRequest request) {
 

@@ -5,30 +5,27 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
 
-	<select id="boardList" parameterType="pageDTO" resultType="boardDTO">
+	<select id="boardList" parameterType="pageDTO"
+		resultType="boardDTO">
 
-		SELECT * 
+		SELECT *
 		FROM boardview
 		LIMIT #{firstRecordIndex},#{recordCountPerPage}
 
 	</select>
 
-	<select id="totalCount" resultType="Integer"> 
+	<select id="totalCount" resultType="Integer">
 		SELECT count(*) FROM board
-	
-	
+
+
 	</select>
-	
-	<select id="commentsList" parameterType="Integer" resultType="Map"> 
-		SELECT * FROM commentsview
-		
-		where bno=#{bno}
-	
-	
+
+	<select id="commentsList" parameterType="Integer" resultType="Map">
+		SELECT * FROM commentsview where bno=#{bno}
 	</select>
-	
-	
-	
+
+
+
 
 
 	<select id="detail" parameterType="boardDTO"
@@ -45,33 +42,47 @@
 	</select>
 
 	<!-- 서브쿼리 : 쿼리 속에 쿼리가 들어가요 -->
-	
-	
+
+
 
 	<insert id="write" parameterType="boardDTO">
 		INSERT INTO board (btitle,bcontent, m_no,bip , uuid)
-		VALUES (#{btitle}, #{bcontent}, (SELECT m_no FROM members WHERE
-		m_id=#{m_id}), #{bip} , #{uuid} )
+		VALUES (#{btitle},
+		#{bcontent}, (SELECT m_no FROM members WHERE
+		m_id=#{m_id}), #{bip} ,
+		#{uuid} )
 		<!-- insert는 result가 없습니다 -->
 	</insert>
 	<!-- #{변수명}을 적어주면 변수가 들어간다 -->
 
-	<delete id="delete" parameterType="boardDTO">
-		DELETE from board WHERE bno=#{bno} AND m_no=(SELECT m_no FROM members WHERE m_id=#{m_id})
+	<update id="delete" parameterType="boardDTO">
+		update board set bdel=0
+		WHERE bno=#{bno} AND m_no=(SELECT m_no FROM members WHERE m_id=#{m_id})
 
-	</delete>
+	</update>
 
 	<update id="edit" parameterType="boardDTO">
 
-		UPDATE board SET btitle= #{btitle}, bcontent=#{bcontent}
+		UPDATE board SET btitle=
+		#{btitle}, bcontent=#{bcontent}
 		WHERE bno=#{bno}
 
 	</update>
 
 	<update id="likeUp" parameterType="boardDTO">
 
-		UPDATE board SET blike = blike + 1
+		UPDATE board SET blike = blike
+		+ 1
 		WHERE bno=#{bno }
+
+	</update>
+	 
+		<update id="cdel" parameterType="Map">
+
+		UPDATE comments SET c_del =0 
+		where bno=#{bno} and c_no=#{cno} 
+		and m_no=(select m_no from members where m_id=#{mid})
+	
 
 	</update>
 

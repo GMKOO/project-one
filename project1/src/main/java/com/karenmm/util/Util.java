@@ -107,4 +107,18 @@ public class Util {
 
 	}
 
+	public boolean isNum(Object obj) {
+		try {
+			Integer.parseInt(String.valueOf(obj));
+			return true;
+			
+		} catch (Exception e) {
+			
+			return false;
+		}
+		
+	
+
+	}
+	
 }

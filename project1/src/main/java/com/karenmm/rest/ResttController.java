@@ -3,6 +3,8 @@ package com.karenmm.rest;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.karenmm.board.BoardService;
 import com.karenmm.login.LoginService;
+import com.karenmm.util.Util;
 
 //@ResponseBody + controller  = restController   ajax용으로 사용된다
 
@@ -20,6 +24,12 @@ public class ResttController {
 	
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private BoardService boardService;
+	
+	@Autowired
+	private Util util;
 	
 
 	
@@ -40,6 +50,13 @@ public class ResttController {
 				
 		
 			}
+		
+		//자바스크립트로 만든 것.
+		@PostMapping("/checkID2")
+		public String checkID2(@RequestParam("id") String id) {
+			int result = loginService.checkID(id);
+			return result+"";
+		}
 		
 		//boardList2
 		@GetMapping(value = "/boardList2", produces = "application/text; charset=UTF-8")
@@ -71,8 +88,26 @@ public class ResttController {
 						        
 			객체 : {키 : 값, 이름 : 값,........}			        
 						       */
-								
-								
+		@PostMapping("/cdelR")
+		public String cdelR(@RequestParam Map<String,Object> map, HttpSession session) {
+			int result = 0;
+			if(session.getAttribute("mid") != null) {
+				 
+				 if(map.containsKey("bno")&& map.get("cno")!=null &&
+						 
+					 !(map.get("bno").equals("")) && !(map.get("cno").equals(""))
+						&& util.isNum(map.get("bno")) && util.isNum(map.get("cno")))
+					 
+					 map.put("mid", session.getAttribute("mid"));
+				 	result = boardService.cdel(map);
+				 	System.out.println("삭제결과: " + result);
+			
+			 }
+			return result+"";
+		}
+						
+		
+		
 		}
 
 

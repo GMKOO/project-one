@@ -101,6 +101,10 @@ public class BoardService {
 		return boardDAO.commentsList(bno);
 	}
 
+	public int cdel(Map<String, Object> map) {
+		return boardDAO.cdel(map);
+	}
+
 
 
 }
