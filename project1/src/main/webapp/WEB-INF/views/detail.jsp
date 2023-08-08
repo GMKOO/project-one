@@ -69,6 +69,96 @@
 			}
 		});
 		//댓글 수정 버튼 만들기 = 반드시 로그인 하고, 자신의 글인지 확인하는 검사 구문 필요.
+		$(".cedit").click(function(){
+					
+		
+				// const bno = "${dto.bno}";
+	const cno = $(this).parent().siblings(".cid").text();
+	let content = $(this).parents(".commentHead").siblings(".commentBody").text();
+
+$.ajax({
+	url: "./ceditR",
+	type: "post",
+	data : {bno : ${dto.bno }, cno : cno},
+	dataType: "json",
+	success:function(data){
+		//alert(data.result);
+		if(data.result == 1){
+			cno_comments.after(recommentBox);	//변수에 담긴 html삭제
+			
+			let recommentBox = '<div class="recommentBox">';
+			 recommentBox += '<form action="./cedit" method="post">';
+
+				recommentBox += '<textarea id="rcta" name="recomment" placeholder="댓글을 입력하세요">'+content+'</textarea>';
+				recommentBox += '<input type="hidden" id="bno" name="bno" value="${dto.bno}">';
+				recommentBox += '<input type="hidden" id="cno" name="cno" value="'+cno+'">';
+				recommentBox +='<button type="submit" id="recomment">댓글수정하기 </button>';				
+				recommentBox += '</form>';	
+				recommentBox += '</div>';	
+			
+			//alert("이런");
+		} else {
+			alert("통신에 문제가 발생했습니다. 다시 시도해주세요.");
+		}
+	},
+	error:function(error){
+		alert("에러가 발생했습니다 " + error);
+	}
+});
+});
+});
+
+
+
+/* let recommentBox = '<div class="recommentBox">';
+ recommentBox += '<form action="./cedit" method="post">';
+
+	recommentBox += '<textarea id="rcta" name="recomment" placeholder="댓글을 입력하세요">'+content+'</textarea>';
+	recommentBox += '<input type="hidden" id="bno" name="bno" value="${dto.bno}">';
+	recommentBox += '<input type="hidden" id="cno" name="cno" value="'+cno+'">';
+	recommentBox +='<button type="submit" id="recomment">댓글수정하기 </button>';				
+	recommentBox += '</form>';	
+	recommentBox += '</div>';	
+	//'<form action="./comment" method="post"><textarea id="commenttextarea" name="comment" placeholder="댓글을 입력하세요"></textarea><button type="submit" id="comment">글쓰기</button><input type="hidden" name="bno" value="${dto.bno }"></form>'
+		//	$("#commenttextarea")	
+
+				//alert( bno + " /" + cno + " / " + content);
+				let commentDIV = $(this).parents(".comment");
+				commentDIV.after(recommentBox);
+				
+				commentDIV.remove();
+				
+				$(".cedit").remove();
+				$(".cdel").remove();
+				$("#openComment").remove();
+				
+				
+		});
+				 */
+		
+		
+		
+		//key up 텍스트입력창 : #commenttextarea, 버튼 : #comment 
+		$("#commenttextarea").keyup(function(){
+			
+			//다른방식
+			// let text = $(this).val().length;
+			let text = $(this).val();
+			//if(text >600){
+				if(text.length >600){
+				alert("600자 넘었어요.");
+				//$(this).val( $(this).val().substr(0,600));
+				
+				$(this).val( text.substr(0,600));
+				//$("#comment").text("글쓰기 " + text+"/600");
+				$("#comment").text("글쓰기 " + text.length+"/600");
+				
+			}
+			$("#comment").text("글쓰기 " + $(this).val().length+"/600");
+			
+		});
+		
+		
 	});
 </script>
 </head>
@@ -80,7 +170,7 @@
 		<div class="title">
 			${dto.bno } - ${dto.btitle }
 			<c:if test="${sessionScope.mid ne null && sessionScope.mid eq dto.m_id}">
-			<img  alt="" src="./img/update2.png" onclick="edit()"> &nbsp;
+			<img  alt="" src="./img/update2.png" onclick="edit()">&nbsp;
 		 	<img  alt="" src="./img/delete2.png" onclick="del()">
 			
 			
@@ -105,7 +195,7 @@
 								${c.m_name }(${c.m_id })
 								<c:if test="${sessionScope.mid ne null && sessionScope.mid eq c.m_id}">
 								<!-- sessionScope.mid ne null 이걸 왜 붙이는 걸까... 문제해결 -->
-								<img alt="" src="./img/update2.png" onclick="cedit()"> &nbsp;
+								<img alt="" src="./img/update2.png" class="cedit" onclick="cedit()">&nbsp;
 								 <img class="cdel" alt="" src="./img/delete2.png"  onclick="cdel1(${c.c_no })">
 								
 								

@@ -85,6 +85,18 @@
 	
 
 	</update>
+	
+	
+		<update id="cedit" parameterType="Map">
+
+		UPDATE comments SET c_comment=#{recomment } 
+		where bno=#{bno} and c_no=#{cno} 
+		and m_no=(select m_no from members where m_id=#{mid})
+	
+
+	</update>
+	
+	
 
 
 </mapper>

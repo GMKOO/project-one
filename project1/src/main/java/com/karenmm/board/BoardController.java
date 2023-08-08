@@ -281,8 +281,29 @@ public class BoardController {
 		}
 		//값 들어왔는지 여부검사
 		
+	@PostMapping("/cedit")
+	public String cedit(@RequestParam Map<String,Object> map,HttpSession session) {
+		System.out.println("이거맵"+map);
+		
+		if(session.getAttribute("mid") != null) {
+			if(map.get("bno") != null && !(map.get("bno").equals("")) &&
+				map.containsKey("cno") && !(map.get("cno").equals("")) ) {
+				map.put("mid", session.getAttribute("mid"));
+		System.out.println("이거맵"+map);
+		int result = boardService.cedit(map);
 		
 		
+		return "redirect:/detail?bno=" + map.get("bno");
+		
+	} else  {
+		return "redirect:/login";
+	}		
+	} else  {
+		return "redirect:/login";
+	}
+	
+		
+	}
 }
 //	
 
